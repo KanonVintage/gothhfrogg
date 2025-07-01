@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import KittyBowSVG from './KittyBowSVG';
 
 export default function Loader() {
   const [visible, setVisible] = useState(true);
@@ -16,8 +17,12 @@ export default function Loader() {
 
   return (
     <div style={styles.overlay}>
-        <div style={styles.box}>
-            🎀
+        <div style={styles.bow}>
+          <div style={{
+            animation: 'glitch-shake 0.6s infinite',
+          }}>
+              <KittyBowSVG size={100} />
+            </div>
         </div>
     </div>    
   );

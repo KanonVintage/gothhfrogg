@@ -13,6 +13,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 a {
   font-weight: 500;
   color: #ff6ec7;
@@ -68,5 +75,18 @@ button:focus-visible {
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+}
+
+@keyframes glitch-shake {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-1px, 1px) rotate(1deg); }
+  20% { transform: translate(2px, -1px) rotate(1deg); }
+  30% { transform: translate(-2px, 2px) rotate(-1.5deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(0, 0) rotate(0deg); }
+  60% { transform: translate(1px, 1px) rotate(0.5deg); }
+  70% { transform: translate(-1px, -1px) rotate(-360deg); }
+  80% { transform: translate(2px, 2px) rotate(1deg); }
+  90% { transform: translate(-2px, 1px) rotate(-1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
 }
