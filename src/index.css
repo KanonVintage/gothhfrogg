@@ -13,11 +13,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body, #root {
-  height: 100%;
+* {
+  box-sizing: border-box;
+}
+
+body, html {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden; /* ⬅️ This prevents sideways scrolling */
+  width: 100vw;
 }
 
 a {

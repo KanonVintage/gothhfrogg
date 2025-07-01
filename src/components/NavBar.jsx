@@ -15,6 +15,7 @@ export default function NavBar() {
 const styles = {
   nav: {
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
     padding: '1rem',
     borderBottom: '2px solid pink',

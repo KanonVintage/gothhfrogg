@@ -21,7 +21,7 @@ export default function Loader() {
           <div style={{
             animation: 'glitch-shake 0.6s infinite',
           }}>
-              <KittyBowSVG size={100} />
+              <KittyBowSVG size={70} />
             </div>
         </div>
     </div>    
