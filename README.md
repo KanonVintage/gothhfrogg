@@ -1,6 +1,6 @@
 # GOTHHFROGG 🖤🐸💿
 
-GOTHHFROGG v0.1: VHS Brutal Kitty Edition
+GOTHHFROGG v0.1: VHS Brutal Kitty Edition 🎀
 
 ## Expanding the ESLint configuration
 
