@@ -1,3 +1,5 @@
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -17,6 +19,19 @@
   box-sizing: border-box;
 }
 
+.container {
+  max-width: 1200px; /* or 1100px, 960px, etc. depending on your taste */
+  margin: 0 auto;
+  padding: 0 1rem; /* Optional: gives some horizontal padding on mobile */
+}
+
+.background-wrapper {
+  /*background-image: url('/images/gothhfrogg.jpg');*/
+  background: linear-gradient(135deg, #ff6ec7, #d4a0ff);
+  background-size: cover;
+  background-position: center;
+}
+
 body, html {
   margin: 0;
   padding: 0;
@@ -29,8 +44,12 @@ a {
   color: #ff6ec7;
   text-decoration: none;
 }
+a:hover svg {
+  transform: translateX(5px);
+}
 a:hover {
-  text-decoration: underline;
+  background-color: #6ec7ff;
+  color: #000;
 }
 
 body {
@@ -64,6 +83,17 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+nav {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  nav a {
+    font-size: 0.875rem;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -76,7 +106,11 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 @keyframes spin {
   0% { transform: rotate(0deg); }
 }
@@ -93,4 +127,62 @@ button:focus-visible {
   80% { transform: translate(2px, 2px) rotate(1deg); }
   90% { transform: translate(-2px, 1px) rotate(-1deg); }
   100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow:
+      0 0 5px #ff6ec7,
+      0 0 10px #ff6ec7,
+      0 0 20px #ff6ec7,
+      0 0 40px #ff1493,
+      0 0 80px #ff1493;
+  }
+
+  20%, 24%, 55% {
+    opacity: 0.6;
+    text-shadow: none;
+  }
+}
+
+@keyframes vhsLines {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 100px; }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -48%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.popup-fade {
+  animation: fadeInOut 0.3s ease forwards;
+}
+
+.vhs-effect::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  animation: vhsLines 1s linear infinite;
+  z-index: 2;
+  mix-blend-mode: overlay;
+  opacity: 0.4;
+
+  
 }

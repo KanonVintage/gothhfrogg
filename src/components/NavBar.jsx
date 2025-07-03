@@ -1,35 +1,29 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './NavBar.css';
+
 export default function NavBar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <nav style={styles.nav}>
-      <h1 style={styles.logo}>GOTHHFROGG</h1>
-      <ul style={styles.links}>
-        <li><a href="#music">MUSIC</a></li>
-        <li><a href="#shows">SHOWS</a></li>
-        <li><a href="#gallery">GALLERY</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-      </ul>
+    <nav className="navbar">
+      <Link to="/" className="logo">GOTHHFROGG</Link>
+
+      <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+        <div className="nav-separator" />
+        <Link to="/who-am-i" onClick={() => setMenuOpen(false)}>Who Am I</Link>
+        <div className="nav-separator" />
+        <Link to="/what-i-do" onClick={() => setMenuOpen(false)}>What I Do</Link>
+        <div className="nav-separator" />
+        <Link to="/music" onClick={() => setMenuOpen(false)}>Music</Link>
+        <div className="nav-separator" />
+        <Link to="/gallery" onClick={() => setMenuOpen(false)}>Gallery</Link>
+        <div className="nav-separator" />
+      </div>
+
+      <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        <span></span><span></span><span></span>
+      </div>
     </nav>
   );
 }
-
-const styles = {
-  nav: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    padding: '1rem',
-    borderBottom: '2px solid pink',
-    background: 'black',
-    color: 'pink',
-    fontFamily: 'monospace',
-  },
-  logo: {
-    fontSize: '1.5rem',
-    letterSpacing: '2px',
-  },
-  links: {
-    display: 'flex',
-    listStyle: 'none',
-    gap: '1rem',
-  }
-};

@@ -1,50 +1,9 @@
-import { Link } from 'react-router-dom';
-import SocialButton from './SocialButton';
-import { FaInstagram, FaYoutube, FaSpotify } from 'react-icons/fa';
-
 export default function Hero() {
   return (
     <section style={styles.hero}>
-      <div className="vhs-effect" style={styles.overlay}>
+      <div style={styles.overlay}>
         <h1 style={styles.title}>GOTHHFROGG</h1>
         <p style={styles.subtitle}>Guitarrist and Photographer.</p>
-        <Link to="/who-am-i" style={styles.bubbleButton}>
-          <span style={styles.bubbleText}>More about me</span>
-          <svg
-            width="min(max(2.564vw, 0.625rem), 1rem)"
-            height="min(max(2.564vw, 0.625rem), 1rem)"
-            style={styles.arrow}
-            viewBox="0 0 21 22"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M18.9043 11.0039L10.0272 2.12684" stroke="currentColor" strokeWidth="2.4569" strokeLinecap="round" />
-            <path d="M18.9043 10.9961L10.0274 19.873" stroke="currentColor" strokeWidth="2.4569" strokeLinecap="round" />
-            <path d="M18.9004 11.0098L1.99917 10.9994" stroke="currentColor" strokeWidth="2.4569" strokeLinecap="round" />
-          </svg>
-        </Link>
-
-        <div style={{ marginTop: '2rem' }}>
-          <SocialButton
-            icon={FaInstagram}
-            platform="Instagram"
-            handle="noanaomirage"
-            url="https://www.instagram.com/noanaomirage/"
-          />
-          <SocialButton
-            icon={FaYoutube}
-            platform="YouTube"
-            handle="noalepont"
-            url="https://www.youtube.com/@noalepont"
-          />
-          <SocialButton
-            icon={FaSpotify}
-            platform="Spotify"
-            handle="noanaomirage"
-            url="https://open.spotify.com/user/78vwm321e0adz1uox0k5in4mz?si=59c1c2c0daca4ec7"
-          />
-        </div>
-
         <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
           <a href="https://www.instagram.com/noanaomirage/" target="_blank" rel="noopener noreferrer">
             <i className="fa-brands fa-instagram" style={iconStyle}></i>
@@ -56,7 +15,6 @@ export default function Hero() {
             <i className="fa-brands fa-spotify" style={iconStyle}></i>
           </a>
         </div>
-
       </div>
     </section>
   );
@@ -71,29 +29,6 @@ const styles = {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-  },
-  bubbleButton: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '0.75rem',
-    backgroundColor: '#c7ff6e', // Chartreuse
-    color: 'black',
-    borderRadius: '50px',
-    padding: '0.75rem 1.5rem',
-    fontWeight: 'bold',
-    fontSize: '1rem',
-    textDecoration: 'none',
-    marginTop: '2rem',
-    boxShadow: '0 0 10px #c7ff6e70',
-    transition: 'all 0.3s ease-in-out',
-  },
-  bubbleText: {
-    color: '#000',
-    fontFamily: 'monospace',
-  },
-  arrow: {
-    stroke: '#000', // contrast arrow
-    transition: 'transform 0.2s ease',
   },
   overlay: {
     position: 'absolute',
