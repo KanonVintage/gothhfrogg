@@ -27,9 +27,13 @@
 
 .background-wrapper {
   /*background-image: url('/images/gothhfrogg.jpg');*/
-  background: linear-gradient(135deg, #ff6ec7, #d4a0ff);
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(270deg, #ff6ec7, #d4a0ff, #ff6ec7);
+  background-size: 600% 600%;
+  animation: gradientShift 15s ease infinite;
+}
+
+body {
+  font-family: 'monospace', 'Space Grotesk', 'Inter', sans-serif;
 }
 
 body, html {
@@ -133,10 +137,7 @@ nav {
   0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
     opacity: 1;
     text-shadow:
-      0 0 5px #ff6ec7,
       0 0 10px #ff6ec7,
-      0 0 20px #ff6ec7,
-      0 0 40px #ff1493,
       0 0 80px #ff1493;
   }
 

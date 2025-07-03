@@ -1,0 +1,167 @@
+/* --- Root Wrapper --- */
+.who-wrapper {
+  background-color: #000;
+  color: #ddd;
+  font-family: 'Space Grotesk', 'Inter', monospace, sans-serif;
+}
+
+/* HERO SECTION */
+.who-hero {
+  height: 60vh;
+  position: relative;
+  background: radial-gradient(circle at 30% 30%, #ff6ec760, transparent 70%), #120020;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  font-family: inherit;
+}
+
+.hero-content {
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 5rem;
+  line-height: 1.2;
+  color: white;
+  text-shadow: 0 0 15px #ff6ec7;
+}
+
+.hero-sub {
+  color: #bbb;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.hero-bg {
+  background-image: url('/images/nebula.svg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* SECTION BLOCKS */
+.who-section {
+  display: flex;
+  border-top: 0.5px solid #1e0033;
+  border-bottom: 0.5px solid #1e0033;
+  font-family: inherit;
+}
+
+.who-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.text-block, .image-block {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+
+.text-block {
+  flex-direction: column;
+  text-align: left;
+  background-color: #fff;
+
+}
+
+.text-block h2 {
+  font-size: 2.5rem;
+  color: #1e0033;
+  margin-bottom: 1rem;
+  font-family: inherit;
+}
+
+.text-block p,
+.text-block ul {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: black;
+  max-width: 500px;
+  font-family: inherit;
+}
+
+.text-block ul {
+  padding-left: 1.5rem;
+  list-style-type: square;
+}
+
+/* IMAGE BLOCKS */
+.image-block {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.vision-img {
+  background-image: url('/images/vision.jpg');
+}
+
+.mission-img {
+  background-image: url('/images/mission.jpg');
+}
+
+.values-img {
+  background-image: url('/images/values.jpg');
+}
+
+/* ORIGIN SECTION */
+.who-origin {
+  padding: 5rem 2rem;
+  text-align: center;
+  background: #14002a;
+  border-top: 1px solid #1e0033;
+  font-family: inherit;
+}
+
+.who-origin h2 {
+  font-size: 3rem;
+  color: #ffb6ff;
+  margin-bottom: 1.5rem;
+}
+
+.who-origin p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #black;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* MOBILE FIXES */
+@media (max-width: 768px) {
+  .who-section {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .image-block {
+    aspect-ratio: 1 / 1;
+    height: auto;
+    min-height: 200px;
+    flex: 1 1 100%;
+  }
+
+  .text-block {
+    flex: 1 1 100%;
+    padding: 2rem;
+    text-align: center;
+    background-color: #fff;
+  }
+
+  .hero-content h1 {
+    font-size: 4rem;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+  }
+}
