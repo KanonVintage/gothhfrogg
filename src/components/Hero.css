@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
+@media (min-width: 900px) {
+  .image-banner {
+    height: 100vh !important;   /* Desktop: 95% of viewport height */
+  }
+}
+
+.bubbleButton {
+  position: absolute;
+  right: 2vw;
+  bottom: 2vw;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ff9dbc;
+  color: #181818;
+  border: 3px solid #181818;
+  border-radius: 0;
+  font-family: 'Black Han Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  padding: 0.5em 1.2em;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #181818;
+  transition: background 0.15s, color 0.15s;
+  outline: none;
+  z-index: 5;
+}
+
+.bubbleButton:hover {
+  background: #181818;
+  color: #ff9dbc;
+}
+
+.bubbleButton svg {
+  stroke: #181818;
+  transition: stroke 0.15s;
+}
+.bubbleButton:hover svg {
+  stroke: #ff9dbc;
+}

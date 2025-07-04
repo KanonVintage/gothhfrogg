@@ -1,86 +1,163 @@
-:root {
-  --goth-pink: #ff6ec7;
-  --goth-sky: #6ec7ff;
-  --goth-lime: #c7ff6e;
-  --neon-shadow: 0 0 2px var(--goth-sky), 0 0 5px var(--goth-lime);
-}
-
 .navbar {
-  width: 100%;
-  padding: 1rem 2rem;
+  width: 100vw;
+  min-height: 70px;
+  padding: 1rem 3vw 1rem 3vw;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-family: monospace;
-  background-color: #000;
-  border-bottom: 2px solid var(--goth-pink);
-  z-index: 50;
+  justify-content: space-between;
+  background: transparent;
+  border-bottom: 2.2px solid #181818; /* goth-black thin line */
+  font-family: 'Black Han Sans', monospace, sans-serif;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
 }
 
 .logo {
-  font-size: 1.2rem;
-  font-weight: bold;
-  letter-spacing: 1px;
+  font-family: 'Black Han Sans', monospace, sans-serif;
+  color: #181818;
+  font-size: 2rem;
+  font-weight: 900;
   text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-shadow: 0 1px 0 #181818, 0 2px 4px #fff;
+  user-select: none;
+  cursor: pointer;
+  margin-right: 2vw;
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1vw;
+  align-items: center;
+}
+
+.nav-links ul, .nav-links li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .nav-links a {
-  color: var(--goth-pink);
-  font-size: 0.9rem;
+  background: #ffb6e2;
+  color: #181818;
+  font-family: inherit;
+  font-size: 1.09rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
-  transition: color 0.2s ease;
+  text-decoration: none;
+  border-radius: 0;
+  padding: 0.67em 1.8em 0.67em 1.4em;
+  margin: 0 0.09em;
+  border: 2.2px solid #181818;
+  box-shadow: 6px 8px 0px #fff;
+  transition:
+    background 0.14s,
+    color 0.14s,
+    border-color 0.13s,
+    box-shadow 0.16s;
+  position: relative;
+  z-index: 1;
+  outline: none;
+  display: inline-block;
 }
 
-.nav-links a:hover {
-  color: var(--goth-sky);
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  background: #181818;
+  color: #ffb6e2;
+  border-color: #ffb6e2;
+  box-shadow: 6px 8px 0px #fff;
 }
 
-.nav-separator {
-  width: 1px;
-  height: 100%;
-  background-color: var(--goth-pink);
-  margin: 0 10px;
-}
-
-.hamburger {
+/* Hamburger styles */
+.burger {
   display: none;
-  flex-direction: column;
-  gap: 7px;
   cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: inherit;
+  border: 2.2px solid #181818;
+  border-radius: 0px;
+  align-items: center;
+  margin-left: 1vw;
+  z-index: 1101;
+  transition: background 0.2s;
 }
 
-.hamburger span {
-  width: 25px;
-  height: 2px;
-  background-color: var(--goth-pink);
-  transition: 0.3s ease;
+.burger span {
+  display: block;
+  width: 22px;
+  height: 3.5px;
+  background: #181818;
+  margin: 3px 0;
+  border-radius: 0px;
+  transition: all 0.2s;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0.5rem 2vw 0.5rem 2vw;
+    min-height: 40px;
+  }
+  .logo {
+    font-size: 1.35rem;
+  }
   .nav-links {
-    position: absolute;
-    top: 4rem;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    background-color: black;
-    padding: 1rem 2rem;
     display: none;
   }
-
-  .nav-links.open {
+  .burger {
     display: flex;
   }
-
-  .hamburger {
+  .mobile-menu {
     display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 74vw;
+    max-width: 340px;
+    height: 100vh;
+    background: #ffb6e2;
+    box-shadow: -10px 0 24px 0 #ffb6e2c0, -2px 0 0 0 #181818;
+    z-index: 1100;
+    padding-top: 5.5rem;
+    border-left: 2.2px solid #181818;
+    animation: slideIn 0.22s cubic-bezier(.83,0,.24,1.01);
   }
+  .mobile-menu a {
+    background: #fff;
+    color: #181818;
+    border: 2.2px solid #181818;
+    box-shadow: 4px 4px 0px #ffb6e2;
+    border-radius: 0;
+    padding: 1rem 1.8rem 1rem 1.4rem;
+    margin: 1rem 2rem 0.5rem 2rem;
+    width: calc(100% - 4rem);
+    display: block;
+    font-family: inherit;
+    font-weight: 900;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    transition: background 0.14s, color 0.14s, border-color 0.13s;
+  }
+  .mobile-menu a:hover,
+  .mobile-menu a:focus-visible {
+    background: #181818;
+    color: #ffb6e2;
+    border-color: #ffb6e2;
+  }
+}
+
+/* Mobile menu animation */
+@keyframes slideIn {
+  from { right: -70vw; opacity: 0; }
+  to { right: 0; opacity: 1; }
 }

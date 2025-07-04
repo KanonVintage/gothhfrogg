@@ -1,29 +1,40 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <nav className="navbar">
       <Link to="/" className="logo">GOTHHFROGG</Link>
 
-      <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        <div className="nav-separator" />
-        <Link to="/who-am-i" onClick={() => setMenuOpen(false)}>Who Am I</Link>
-        <div className="nav-separator" />
-        <Link to="/what-i-do" onClick={() => setMenuOpen(false)}>What I Do</Link>
-        <div className="nav-separator" />
-        <Link to="/music" onClick={() => setMenuOpen(false)}>Music</Link>
-        <div className="nav-separator" />
-        <Link to="/gallery" onClick={() => setMenuOpen(false)}>Gallery</Link>
-        <div className="nav-separator" />
+      {/* Desktop Links */}
+      <div className="nav-links">
+        <Link to="/who-am-i">Who Am I</Link>
+        <Link to="/what-i-do">What I Do</Link>
+        <Link to="/music">Music</Link>
+        <Link to="/gallery">Gallery</Link>
       </div>
 
-      <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-        <span></span><span></span><span></span>
+      {/* Hamburger */}
+      <div className="burger" onClick={() => setMenuOpen((open) => !open)} aria-label="Open menu">
+        <span />
+        <span />
+        <span />
       </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="mobile-menu" onClick={closeMenu}>
+          <Link to="/who-am-i">Who Am I</Link>
+          <Link to="/what-i-do">What I Do</Link>
+          <Link to="/music">Music</Link>
+          <Link to="/gallery">Gallery</Link>
+        </div>
+      )}
     </nav>
   );
 }

@@ -8,7 +8,7 @@ export default function SocialButton({ icon: Icon, platform, handle, url }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const [copied, setCopied] = useState(false);
-
+  const [hovered, setHovered] = useState(false); // <-- ADD THIS
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -20,39 +20,24 @@ export default function SocialButton({ icon: Icon, platform, handle, url }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [menuOpen]);
 
-  const shareOptions = [
-  {
-    label: 'Copy Link',
-    icon: <FaLink />,
-    action: () => {
-      navigator.clipboard.writeText(url);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    },
-  },
-  {
-    label: 'Share to Facebook',
-    icon: <FaFacebook />,
-    action: () => window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank'),
-  },
-  {
-    label: 'Share on Twitter',
-    icon: <FaTwitter />,
-    action: () => window.open(`https://twitter.com/share?url=${url}`, '_blank'),
-  },
-];
-
+   // Inline merge style based on hovered
+  const wrapperStyle = {
+    ...styles.wrapper,
+    ...(hovered && styles.wrapperHover)
+  };
 
   return (
-    <div style={styles.wrapper}>
+    <div style={wrapperStyle} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
       {/* Main button area */}
-      <a href={url} target="_blank" rel="noopener noreferrer" style={styles.button}>
-        <Icon style={styles.icon} />
-        <div>
-          <div style={styles.platform}>{platform}</div>
-          <div style={styles.handle}>{handle}</div>
-        </div>
-      </a>
+      <div style={styles.leftContent}>
+        <a href={url} target="_blank" rel="noopener noreferrer" style={styles.button}>
+          <Icon style={styles.icon} />
+          <div>
+            <div style={styles.platform}>{platform}</div>
+            <div style={styles.handle}>{handle}</div>
+          </div>
+        </a>
+      </div>
 
       {/* Menu toggle and popup */}
       <div ref={menuRef} style={styles.menuArea}>
@@ -72,84 +57,60 @@ export default function SocialButton({ icon: Icon, platform, handle, url }) {
               }}
             />
 
-            {/* Popup card */}
-            <div
-              className="popup-fade"
-              style={{
-                position: 'fixed',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                backgroundColor: '#222',
-                color: 'white',
-                borderRadius: '1rem',
-                padding: '1.5rem 1rem 1rem',
-                zIndex: 1000,
-                width: '80%',
-                maxWidth: '320px',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.6)',
-                fontFamily: 'monospace',
-                textAlign: 'center',
-              }}
-            >
-              {/* Close 'X' Button */}
-              <button
-                onClick={() => setMenuOpen(false)}
-                style={{
-                  position: 'absolute',
-                  top: '0.5rem',
-                  right: '0.75rem',
-                  background: 'transparent',
-                  border: 'none',
-                  color: '#fff',
-                  fontSize: '1.25rem',
-                  cursor: 'pointer',
-                }}
-                aria-label="Close"
-              >
-                &times;
-              </button>
-              <br></br>
-
-              <div style={styles.profile}>
-                <img
-                  src="/gothhfrogg/images/noana.jpg"
-                  alt="Profile"
-                  style={styles.profileImage}
-                />
-                <div style={styles.profileText}>
-                  <div style={styles.profileName}>GOTHHFROGG</div>
-                  <div style={styles.profileHandle}>@{handle}</div>
+            {/* Popup shadow and card */}
+            <div style={{
+              position: 'fixed',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              zIndex: 1000,
+              width: '340px',
+              maxWidth: '96vw',
+            }}>
+              {/* Popup card */}
+              <div style={styles.popupCard}>
+                {/* Close 'X' Button */}
+                <button
+                  onClick={() => setMenuOpen(false)}
+                  style={styles.closeBtn}
+                  aria-label="Close"
+                >
+                  &times;
+                </button>
+                <div style={styles.profileRow}>
+                  <img
+                    src="/gothhfrogg/images/noana.jpg"
+                    alt="Profile"
+                    style={styles.profileImage}
+                  />
+                  <div>
+                    <div style={styles.popupTitle}>GOTHHFROGG</div>
+                    <div style={styles.popupHandle}>@{handle}</div>
+                  </div>
+                </div>
+                {copied && (
+                  <div style={styles.copiedFeedback}>Link copied!</div>
+                )}
+                <hr style={styles.divider} />
+                <div style={styles.shareRow}>
+                  <div style={styles.shareItem} onClick={() => {
+                    navigator.clipboard.writeText(url);
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                  }}>
+                    <div style={styles.shareIconBubble}><FaLink /></div>
+                    <div style={styles.shareLabel}>Copy link</div>
+                  </div>
+                  <div style={styles.shareItem} onClick={() => window.open(`https://twitter.com/share?url=${url}`, '_blank')}>
+                    <div style={styles.shareIconBubble}><FaTwitter /></div>
+                    <div style={styles.shareLabel}>X</div>
+                  </div>
+                  <div style={styles.shareItem} onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank')}>
+                    <div style={styles.shareIconBubble}><FaFacebook /></div>
+                    <div style={styles.shareLabel}>Facebook</div>
+                  </div>
                 </div>
               </div>
-
-              <br></br>
-              {copied && (
-                <div style={styles.copiedFeedback}>Link copied!</div>
-              )}
-              
-
-              <hr style={styles.divider} />
-
-              <div style={styles.shareRow}>
-                <div style={styles.shareItem} onClick={() => {
-                  navigator.clipboard.writeText(url);
-                  setCopied(true);
-                  setTimeout(() => setCopied(false), 2000);
-                }}>
-                  <div style={styles.shareIconBubble}><FaLink /></div>
-                  <div style={styles.shareLabel}>Copy link</div>
-                </div>
-                <div style={styles.shareItem} onClick={() => window.open(`https://twitter.com/share?url=${url}`, '_blank')}>
-                  <div style={styles.shareIconBubble}><FaTwitter /></div>
-                  <div style={styles.shareLabel}>X</div>
-                </div>
-                <div style={styles.shareItem} onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank')}>
-                  <div style={styles.shareIconBubble}><FaFacebook /></div>
-                  <div style={styles.shareLabel}>Facebook</div>
-                </div>
-              </div>
-
             </div>
           </>
         )}
@@ -161,17 +122,25 @@ export default function SocialButton({ icon: Icon, platform, handle, url }) {
 const styles = {
   wrapper: {
     display: 'flex',
-    alignItems: 'center',
-    background: '#1a1a1a',
-    borderRadius: '0.75rem',
-    padding: '0.75rem 1rem',
-    margin: '1rem 0',
-    color: 'white',
-    fontFamily: 'monospace',
-    position: 'relative',
-    boxShadow: '0 0 10px #ff6ec7',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    background: '#ff9dbc',
+    borderRadius: '0',
+    padding: '1.5rem',
+    margin: '0.4rem',
+    color: '#000',
+    fontFamily: '"Black Han Sans", monospace, sans-serif',
+    position: 'relative',
+    border: '2px solid #000',
+    boxShadow: '8px 8px 0px #fff',
+    width: '100%',
+    height: '30%',
+    boxSizing: 'border-box',
+    backgroundImage: `repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0, rgba(0,0,0,0.02) 1px, transparent 1px, transparent 4px)`,
+    flexWrap: 'nowrap',
+    marginLeft: '-.1rem',
   },
+
   button: {
     display: 'flex',
     alignItems: 'center',
@@ -181,16 +150,30 @@ const styles = {
     flexGrow: 1,
   },
   icon: {
-    fontSize: '1.5rem',
-    color: '#ff6ec7',
+    fontSize: '2rem',
+    color: 'inherit',
+    filter: 'drop-shadow(0 0 3px #ffb6e2)',
   },
   platform: {
-    fontWeight: 'bold',
-    fontSize: '1rem',
+    fontWeight: 900,
+    fontSize: '1.1rem',
+    color: '#fff',
+    textTransform: 'uppercase',
+    letterSpacing: '0.03em',
+
+    lineHeight: '1.1',
+    fontFamily: '"Black Han Sans", monospace, sans-serif',
+    textShadow: '0 1px 0 #181818, 0 2px 3px #ffb6e2',
+    WebkitTextStroke: '1px #000',
   },
   handle: {
-    fontSize: '0.8rem',
-    opacity: 0.8,
+    fontSize: '0.7rem',
+    color: 'inherit',
+    opacity: 1,
+    fontFamily: 'monospace',
+    fontWeight: 400,
+    marginLeft: '0.2rem',
+    marginTop: '-0.2rem',
   },
   menuArea: {
     position: 'relative',
@@ -199,56 +182,55 @@ const styles = {
   optionsBtn: {
     background: 'transparent',
     border: 'none',
-    color: 'white',
+    color: 'inherit',
     cursor: 'pointer',
-    fontSize: '1rem',
+    fontSize: '1.1rem',
     zIndex: 20,
+    padding: 0,
+    margin: 0,
+    alignSelf: 'flex-start',
+  },
+
+  // --- POPUP STYLES BELOW THIS LINE ---
+
+  popupCard: {
     position: 'relative',
-  },
-  popup: {
-    position: 'absolute',
-    top: '2.5rem',
-    right: 0,
-    background: '#2a2a2a',
-    borderRadius: '0.75rem',
-    boxShadow: '0 0 20px #000000aa',
-    zIndex: 19,
-    overflow: 'hidden',
-    width: '220px',
-    padding: '0.75rem',
-    animation: 'fadeIn 0.2s ease-out',
-  },
-  popupTitle: {
-    fontWeight: 'bold',
-    fontSize: '0.9rem',
-    marginBottom: '0.5rem',
-    color: '#ff6ec7',
-  },
-  popupItem: {
-    padding: '0.5rem 0',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    fontSize: '0.85rem',
+    background: '#232025',
+    border: '2.5px solid #181818',
+    borderRadius: 0,
+    boxShadow: '8px 8px 0px #fff, 0 0 0px #000',
+    width: '340px',
+    maxWidth: '96vw',
+    padding: '2.5rem 1.2rem 1.2rem 1.2rem',
+    fontFamily: '"Black Han Sans", monospace, sans-serif',
     color: '#fff',
-    transition: 'background 0.2s',
-    borderBottom: '1px solid #444',
+    zIndex: 1,
+    textAlign: 'left',
+    boxSizing: 'border-box',
+    minHeight: '225px',
   },
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    height: '100vh',
-    width: '100vw',
-    backgroundColor: 'transparent',
-    zIndex: 5,
+
+  closeBtn: {
+    position: 'absolute',
+    top: '1.2rem',
+    right: '1.4rem',
+    background: 'transparent',
+    border: 'none',
+    color: '#FC94AB',
+    fontSize: '1.5rem',
+    fontWeight: 900,
+    cursor: 'pointer',
+    zIndex: 10,
+    lineHeight: 1,
+    padding: 0,
   },
-  profile: {
+
+  profileRow: {
     display: 'flex',
     alignItems: 'center',
-    gap: '1rem',
-    marginTop: '1rem',
-    marginBottom: '1rem',
+    gap: '1.1rem',
+    marginBottom: '1.3rem',
+    marginTop: '0.3rem',
   },
 
   profileImage: {
@@ -256,31 +238,36 @@ const styles = {
     height: '48px',
     borderRadius: '50%',
     objectFit: 'cover',
-    border: '2px solid #ff6ec7',
+    border: '2.5px solid #FC94AB',
   },
 
-  profileText: {
-    textAlign: 'left',
+  popupTitle: {
+    fontFamily: '"Black Han Sans", monospace, sans-serif',
+    color: '#FC94AB',
+    fontWeight: 900,
+    fontSize: '1.2rem',
+    marginBottom: '0.1em',
+    lineHeight: 1,
+    letterSpacing: '0.01em',
   },
 
-  profileName: {
-    fontWeight: 'bold',
+  popupHandle: {
+    color: '#fff',
+    opacity: 1,
     fontSize: '1rem',
-  },
-
-  profileHandle: {
-    fontSize: '0.875rem',
-    opacity: 0.8,
-    color: '#ccc',
+    fontFamily: 'monospace',
+    marginTop: '0.1em',
+    marginLeft: 0,
   },
 
   shareRow: {
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
-    flexWrap: 'wrap',
     gap: '1rem',
-    padding: '1rem 0 0.5rem',
+    marginTop: '1.2rem',
+    marginBottom: '0.3rem',
+    width: '100%',
   },
 
   shareItem: {
@@ -293,29 +280,31 @@ const styles = {
 
   shareIconBubble: {
     backgroundColor: '#fff',
-    color: '#000',
-    width: '42px',
-    height: '42px',
+    color: '#181818',
+    width: '48px',
+    height: '48px',
     borderRadius: '50%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
-    fontSize: '18px',
-    marginBottom: '0.25rem',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+    fontSize: '1.3rem',
+    marginBottom: '0.2rem',
+    border: '2px solid #FC94AB',
   },
 
   shareLabel: {
-    fontSize: '0.75rem',
-    color: '#ddd',
+    fontSize: '0.9rem',
+    color: '#fff',
     fontFamily: 'monospace',
+    marginTop: '0.1em',
   },
 
   divider: {
     border: 'none',
-    borderTop: '1px solid #444',
-    margin: '1rem 0 0.5rem 0',
-    opacity: 0.5,
+    borderTop: '1.5px solid #fff',
+    margin: '1rem 0 1rem 0',
+    opacity: 0.6,
   },
 
   copiedFeedback: {
@@ -323,6 +312,14 @@ const styles = {
     fontSize: '0.8rem',
     marginTop: '0.5rem',
     transition: 'opacity 0.3s ease',
+  },
+
+  wrapperHover: {
+    background: '#181818',
+    color: '#ff9dbc',
+    boxShadow: '8px 8px 0px #ff9dbc', // invert shadow to pink
+    border: '2px solid #ff9dbc',
+    transition: 'all 0.18s cubic-bezier(.67,-0.55,.37,1.49)',
   },
 
 };
