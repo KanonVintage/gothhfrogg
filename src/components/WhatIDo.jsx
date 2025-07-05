@@ -2,8 +2,9 @@ export default function Hero() {
   return (
     <section style={styles.hero}>
       <div style={styles.overlay}>
-        <h1 style={styles.title}>GOTHHFROGG</h1>
-        <p style={styles.subtitle}>Guitarrist and Photographer.</p>
+        <h1 style={styles.title}>MUSIC! OF COURSE.</h1>
+        <p style={styles.subtitle}>And also photography.</p>
+        <p style={styles.subtitle}>follow me. now.</p>
         <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
           <a href="https://www.instagram.com/noanaomirage/" target="_blank" rel="noopener noreferrer">
             <i className="fa-brands fa-instagram" style={iconStyle}></i>

@@ -40,6 +40,7 @@ body, html {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* ⬅️ This prevents sideways scrolling */
+  overflow-y: auto; /* or scroll */
   width: 100vw;
 }
 
@@ -213,4 +214,27 @@ main {
 footer {
   /* No position: absolute/fixed needed, just full width */
   width: 100%;
+}
+
+.ankh-img {
+  max-width: 120px;      /* or 8vw, or whatever size fits your style */
+  width: 100%;
+  height: auto;
+  margin: 2rem auto 0 auto;
+  display: block;
+  filter: drop-shadow(0 0 4px #ffb6e2);
+  /* Optional: If you want to fade it a bit for background effect: */
+  /* opacity: 0.8; */
+}
+
+.ankh-ico {
+  max-width: 20px;      /* or 8vw, or whatever size fits your style */
+  width: 100%;
+  height: auto;
+  margin: 3rem auto 0 auto;
+  filter: drop-shadow(0 0 4px #ffb6e2);
+  position: flex;
+  display: inline-block;
+  /* Optional: If you want to fade it a bit for background effect: */
+  /* opacity: 0.8; */
 }

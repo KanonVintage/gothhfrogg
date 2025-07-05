@@ -81,7 +81,7 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: inherit;
+  background: #ffb6e2;
   border: 2.2px solid #181818;
   border-radius: 0px;
   align-items: center;
@@ -160,4 +160,12 @@
 @keyframes slideIn {
   from { right: -70vw; opacity: 0; }
   to { right: 0; opacity: 1; }
+}
+
+.nav-overlay {
+  animation: overlayIn 0.23s cubic-bezier(.83,0,.24,1.01);
+}
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

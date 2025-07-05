@@ -1,0 +1,32 @@
+/* Add this to index.css or Music.css */
+.music-brutal-card:hover,
+.music-brutal-card:focus {
+  background: #181818 !important;
+  color: #ffb6e2 !important;
+  border-color: #ff6ec7 !important;
+  box-shadow: 12px 12px 0px #ffb6e2, 0 8px 30px #fff8;
+}
+
+.portfolio-wrapper {
+  position: relative;
+  background: #fff; /* or your brutalist paper shade */
+  min-height: 100vh;
+  overflow: hidden;
+  /* Rest of your card grid here */
+}
+
+/* Make sure all content inside is above the SVG */
+.portfolio-content {
+  position: relative;
+  z-index: 1;
+}
+
+.starfield-bg {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.34;
+}

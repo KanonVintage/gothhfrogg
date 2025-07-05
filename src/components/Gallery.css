@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
 @media (max-width: 900px) {
   .fullscreen-toggle {
     display: none !important;
@@ -90,10 +92,11 @@
 }
 
 .magic-popup-content {
+  font-family: "Black Han Sans", monospace, sans-serif !important;
   background: #fff;
   color: #181818;
   border-radius: 0;         /* Fully squared! */
-  width: 380px;
+  width: 70vh;
   max-width: 90vw;
   max-height: 70vh;
   min-height: 200px;
@@ -139,7 +142,7 @@
 }
 
 .popup-body {
-  font-family: "monospace";
+  font-family: monospace, sans-serif !important;
   font-size: 1em;
   color: #181818;
   line-height: 1.8;

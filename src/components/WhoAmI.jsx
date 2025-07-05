@@ -9,7 +9,13 @@ export default function WhoAmI() {
       <section className="who-hero">
         <div className="hero-content">
           <h1>A Little<br />About Me</h1>
-          <p className="hero-sub">Este es el unico lugar en el que pense seria buena idea de escribirte una carta!</p>
+          <p className="hero-sub">I love music, and cats!<br /></p>
+          <p className="hero-sub">"The risk I took was calculated, but man, am I bad at math."</p>
+          <img
+            src="/gothhfrogg/images/ankher.png"
+            alt="Ankh"
+            className="ankh-img"
+          />
         </div>
         <div className="hero-bg" />
       </section>
@@ -18,7 +24,7 @@ export default function WhoAmI() {
       <section className="who-section">
         <div className="text-block">
           <h2>Vision</h2>
-          <p>My vision </p>
+          <p>I hope that people learn to love and accept my style.</p>
         </div>
         <div className="image-block vision-img" />
       </section>
@@ -27,7 +33,7 @@ export default function WhoAmI() {
       <section className="who-section reverse">
         <div className="text-block">
           <h2>Mission</h2>
-          <p>To connect art, sound, and presence through brutal honesty and soft chaos.</p>
+          <p>To make yourself proud!</p>
         </div>
         <div className="image-block mission-img" />
       </section>
@@ -37,10 +43,10 @@ export default function WhoAmI() {
         <div className="text-block">
           <h2>Values</h2>
           <ul>
-            <li>Chaos and Control</li>
-            <li>Authenticity over polish</li>
+            <li>I believe in kindness</li>
+            <li>I believe in love</li>
+            <li>I believe in soulmates</li>
             <li>Glitter, always</li>
-            <li>Kindness as rebellion</li>
           </ul>
         </div>
         <div className="image-block values-img" />
@@ -50,8 +56,7 @@ export default function WhoAmI() {
       <section className="who-origin">
         <h2>Where I Come From</h2>
         <p>
-          Ecuador — born in clouded peaks, raised in rhythm, built in cables and code. <br />
-          My world is a bridge between mythology and math.
+          Reunion Island. c:
         </p>
       </section>
 

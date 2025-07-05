@@ -4,6 +4,8 @@ import { FaInstagram, FaYoutube, FaSpotify } from 'react-icons/fa';
 import { useRef } from 'react';
 import './Hero.css';
 import { FaChevronDown } from 'react-icons/fa'; // Add to top!
+import { FaT, FaTiktok } from "react-icons/fa6";
+
 
 export default function Hero() {
   const socialsRef = useRef(null);
@@ -49,10 +51,10 @@ export default function Hero() {
           url="https://www.instagram.com/noanaomirage/"
         />
         <SocialButton
-          icon={FaYoutube}
-          platform="YouTube"
-          handle="noalepont"
-          url="https://www.youtube.com/@noalepont"
+          icon={FaTiktok}
+          platform="TikTok"
+          handle="ssupnoa3k"
+          url="https://www.tiktok.com/@ssupnoa3k"
         />
         <SocialButton
           icon={FaSpotify}

@@ -79,12 +79,12 @@ export default function SocialButton({ icon: Icon, platform, handle, url }) {
                 </button>
                 <div style={styles.profileRow}>
                   <img
-                    src="/gothhfrogg/images/noana.jpg"
+                    src="/gothhfrogg/images/ankher.png"
                     alt="Profile"
-                    style={styles.profileImage}
+                    style={styles.iconImage}
                   />
                   <div>
-                    <div style={styles.popupTitle}>GOTHHFROGG</div>
+                    <div style={styles.popupTitle}>{platform}</div>
                     <div style={styles.popupHandle}>@{handle}</div>
                   </div>
                 </div>
@@ -239,6 +239,12 @@ const styles = {
     borderRadius: '50%',
     objectFit: 'cover',
     border: '2.5px solid #FC94AB',
+  },
+
+  iconImage: {
+    width: '48px',
+    height: '48px',
+    filter: 'drop-shadow(0 0 4px #ffb6e2)',
   },
 
   popupTitle: {
